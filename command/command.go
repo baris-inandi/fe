@@ -4,34 +4,46 @@ import (
 	"strings"
 
 	"github.com/baris-inandi/fe/utils"
+	"github.com/urfave/cli/v2"
 )
 
 type Cmd struct {
-	Operation string   // S
-	Options   []rune   // yu
-	Flags     []string // -c --quiet
+	operation rune     // S
+	options   []rune   // yu
+	flags     []string // -c --quiet
 }
 
-func New(operation string) Cmd {
+func New(operation rune) Cmd {
 	return Cmd{
-		Operation: operation,
-		Options:   []rune{},
-		Flags:     []string{},
+		operation: operation,
+		options:   []rune{},
+		flags:     []string{},
 	}
 }
 
-func (c *Cmd) Form() string {
-	return "paru -" + c.Operation + string(c.Options) + " " + strings.Join(c.Flags, " ")
+func (c *Cmd) Form(ctx *cli.Context) string {
+	args := strings.Split(ctx.String("paru"), " ")
+	for _, arg := range args {
+		c.AddFlag(arg)
+	}
+	return "paru -" + string(c.operation) + string(c.options) + " " + strings.Join(c.flags, " ")
 }
 
 func (c *Cmd) AddFlag(flag string) {
-	if !utils.StringContains(c.Flags, flag) {
-		c.Flags = append(c.Flags, flag)
+	if !utils.StringContains(c.flags, flag) {
+		if !strings.HasPrefix(flag, "-") {
+			if len(flag) == 1 {
+				flag = "-" + flag
+			} else {
+				flag = "--" + flag
+			}
+		}
+		c.flags = append(c.flags, flag)
 	}
 }
 
 func (c *Cmd) AddOption(opt rune) {
-	if !utils.RuneContains(c.Options, opt) {
-		c.Options = append(c.Options, opt)
+	if !utils.RuneContains(c.options, opt) {
+		c.options = append(c.options, opt)
 	}
 }

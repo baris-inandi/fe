@@ -1,8 +1,7 @@
 package subcommands
 
 import (
-	"fmt"
-
+	"github.com/baris-inandi/fe/command"
 	"github.com/urfave/cli/v2"
 )
 
@@ -19,8 +18,11 @@ func Install() *cli.Command {
 			},
 		},
 		Action: func(c *cli.Context) error {
-			// paru -S [args]
-			fmt.Println(c.String("paru"))
+			cmd := command.New('S')
+			cmd.AddOption('y')
+			cmd.AddOption('u')
+			cmd.AddFlag("help")
+			cmd.Form(c)
 			return nil
 		},
 	}

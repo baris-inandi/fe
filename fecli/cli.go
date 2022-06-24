@@ -1,7 +1,6 @@
 package fecli
 
 import (
-	"github.com/baris-inandi/fe/fecli/flags"
 	"github.com/baris-inandi/fe/fecli/subcommands"
 	"github.com/urfave/cli/v2"
 )
@@ -10,7 +9,12 @@ var Cli = &cli.App{
 	Name:    "fe",
 	Usage:   "AUR helper with a familiar subcommand system",
 	Suggest: true,
-	Flags:   flags.Flags(),
+	Flags: []cli.Flag{
+		&cli.StringFlag{
+			Name:  "paru",
+			Usage: "Pass arbitrary options to paru",
+		},
+	},
 	Commands: []*cli.Command{
 		subcommands.Install(),
 		subcommands.Search(),
