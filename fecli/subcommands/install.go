@@ -1,6 +1,8 @@
 package subcommands
 
 import (
+	"fmt"
+
 	"github.com/urfave/cli/v2"
 )
 
@@ -17,6 +19,8 @@ func Install() *cli.Command {
 			},
 		},
 		Action: func(c *cli.Context) error {
+			// paru -S [args]
+			fmt.Println(c.String("paru"))
 			return nil
 		},
 	}
