@@ -1,7 +1,6 @@
 package subcommands
 
 import (
-	"github.com/baris-inandi/fe/actions"
 	"github.com/urfave/cli/v2"
 )
 
@@ -18,7 +17,7 @@ func Install() *cli.Command {
 			},
 		},
 		Action: func(c *cli.Context) error {
-			return actions.Install(c)
+			return nil
 		},
 	}
 }

@@ -1,7 +1,6 @@
 package subcommands
 
 import (
-	"github.com/baris-inandi/fe/actions"
 	"github.com/urfave/cli/v2"
 )
 
@@ -23,7 +22,7 @@ func Remove() *cli.Command {
 			},
 		},
 		Action: func(c *cli.Context) error {
-			return actions.Remove(c)
+			return nil
 		},
 	}
 }
