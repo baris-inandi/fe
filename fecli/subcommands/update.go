@@ -10,6 +10,13 @@ func Update() *cli.Command {
 		Name:    "update",
 		Aliases: []string{"up"},
 		Usage:   "Updates all packages",
+		Flags: []cli.Flag{
+			&cli.StringSliceFlag{
+				Name:    "ignore",
+				Aliases: []string{"i"},
+				Usage:   "Don't update given packages",
+			},
+		},
 		Action: func(c *cli.Context) error {
 			return actions.Update(c)
 		},
