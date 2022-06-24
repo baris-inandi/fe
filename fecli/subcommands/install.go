@@ -1,6 +1,8 @@
 package subcommands
 
 import (
+	"fmt"
+
 	"github.com/baris-inandi/fe/command"
 	"github.com/urfave/cli/v2"
 )
@@ -22,7 +24,9 @@ func Install() *cli.Command {
 			cmd.AddOption('y')
 			cmd.AddOption('u')
 			cmd.AddFlag("help")
-			cmd.Form(c)
+			cmd.AddStringFlag("that", "1")
+			x := cmd.Form(c)
+			fmt.Println(x)
 			return nil
 		},
 	}

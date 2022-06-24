@@ -1,6 +1,10 @@
 package subcommands
 
 import (
+	"strings"
+
+	"github.com/baris-inandi/fe/command"
+
 	"github.com/urfave/cli/v2"
 )
 
@@ -17,6 +21,16 @@ func Update() *cli.Command {
 			},
 		},
 		Action: func(c *cli.Context) error {
+			cmd := command.New('S')
+			cmd.AddOptions('y', 'u')
+			cmd.AddFlags("skipreview", "noconfirm", "needed")
+
+			ignoreSlice := c.StringSlice("ignore")
+			if len(ignoreSlice) > 0 {
+				cmd.AddStringFlag("ignore", strings.Join(ignoreSlice, ","))
+			}
+
+			cmd.Form(c)
 			return nil
 		},
 	}
