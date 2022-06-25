@@ -22,6 +22,7 @@ var Cli = &cli.App{
 		subcommands.Clean(),
 		subcommands.List(),
 		subcommands.Remove(),
+		subcommands.HelpParu(),
 	},
 }
 

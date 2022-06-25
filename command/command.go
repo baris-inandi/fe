@@ -9,6 +9,7 @@ import (
 
 type Cmd struct {
 	operation        rune     // S
+	arg              string   // linux
 	options          []rune   // yu
 	flags            []string // -c --quiet
 	existingFlagKeys []string // for internal use
@@ -33,16 +34,19 @@ func New(operation rune) Cmd {
 		operation:        operation,
 		options:          []rune{},
 		flags:            []string{},
+		arg:              "",
 		existingFlagKeys: []string{},
 	}
 }
 
 func (c *Cmd) Form(ctx *cli.Context) string {
-	args := strings.Split(ctx.String("paru"), " ")
-	for _, arg := range args {
-		c.AddFlag(arg)
+	arbitraryFlags := strings.Split(ctx.String("paru"), " ")
+	for _, a := range arbitraryFlags {
+		c.AddFlag(a)
 	}
-	return "paru -" + string(c.operation) + string(c.options) + " " + strings.Join(c.flags, " ")
+	args := strings.Join(ctx.Args().Slice(), " ")
+	c.SetArg(args)
+	return "paru -" + string(c.operation) + string(c.options) + " " + strings.Join(c.flags, " ") + " " + c.arg
 }
 
 func (c *Cmd) AddFlag(flag string) {
@@ -76,4 +80,8 @@ func (c *Cmd) AddOptions(options ...rune) {
 	for _, opt := range options {
 		c.AddOption(opt)
 	}
+}
+
+func (c *Cmd) SetArg(arg string) {
+	c.arg = arg
 }

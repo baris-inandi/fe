@@ -1,6 +1,9 @@
 package subcommands
 
 import (
+	"fmt"
+
+	"github.com/baris-inandi/fe/command"
 	"github.com/urfave/cli/v2"
 )
 
@@ -22,6 +25,25 @@ func Remove() *cli.Command {
 			},
 		},
 		Action: func(c *cli.Context) error {
+			cmd := command.New('R')
+			if c.Bool("query") {
+				// TODO: implement the following script:
+				/*
+				   set targets (paru -Qqs $argv)
+				   if test -n "$targets"
+				       paru -Rs $targets --skipreview --cleanafter --removemake
+				   else
+				       echo "Query returned no results."
+				       return 1
+				   end
+				*/
+			}
+			cmd.AddFlags("skipreview", "noconfirm", "cleanafter")
+			if !c.Bool("keep-deps") {
+				cmd.AddOption('s')
+			}
+			a := cmd.Form(c)
+			fmt.Println(a)
 			return nil
 		},
 	}
