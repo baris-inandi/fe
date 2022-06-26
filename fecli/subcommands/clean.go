@@ -1,6 +1,8 @@
 package subcommands
 
 import (
+	"fmt"
+
 	"github.com/baris-inandi/fe/command"
 	"github.com/urfave/cli/v2"
 )
@@ -15,6 +17,7 @@ func Clean() *cli.Command {
 			cmd.AddOptions('s')
 			cmd.AddFlagsImplicit("skipreview", "cleanafter")
 			cmd.FormWithSubstitute("$(paru -Qqtd)")
+			fmt.Println(cmd.Command)
 			return nil
 		},
 	}

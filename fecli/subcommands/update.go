@@ -1,6 +1,7 @@
 package subcommands
 
 import (
+	"fmt"
 	"strings"
 
 	"github.com/baris-inandi/fe/command"
@@ -31,6 +32,7 @@ func Update() *cli.Command {
 			}
 
 			cmd.FormNoArgs()
+			fmt.Println(cmd.Command)
 			return nil
 		},
 	}
