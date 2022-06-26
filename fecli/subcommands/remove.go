@@ -25,7 +25,7 @@ func Remove() *cli.Command {
 			},
 		},
 		Action: func(c *cli.Context) error {
-			cmd := command.New('R')
+			cmd := command.New(c, 'R')
 			if c.Bool("query") {
 				// TODO: implement the following script:
 				/*
@@ -38,11 +38,11 @@ func Remove() *cli.Command {
 				   end
 				*/
 			}
-			cmd.AddFlags("skipreview", "noconfirm", "cleanafter")
+			cmd.AddFlagsImplicit("skipreview", "cleanafter")
 			if !c.Bool("keep-deps") {
-				cmd.AddOption('s')
+				cmd.AddOptions('s')
 			}
-			a := cmd.Form(c)
+			a := cmd.FormWithArgs()
 			fmt.Println(a)
 			return nil
 		},

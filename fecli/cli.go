@@ -11,8 +11,14 @@ var Cli = &cli.App{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&cli.StringFlag{
-			Name:  "paru",
-			Usage: "Pass arbitrary options to paru",
+			Name:    "paru",
+			Aliases: []string{"p"},
+			Usage:   "Pass arbitrary options to paru",
+		},
+		&cli.BoolFlag{
+			Name:    "default",
+			Aliases: []string{"d"},
+			Usage:   "Don't implicitly pass flags to paru",
 		},
 	},
 	Commands: []*cli.Command{
@@ -25,5 +31,3 @@ var Cli = &cli.App{
 		subcommands.HelpParu(),
 	},
 }
-
-// TODO: use --config to apply the preferred config file

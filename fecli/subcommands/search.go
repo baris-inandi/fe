@@ -13,10 +13,10 @@ func Search() *cli.Command {
 		Aliases: []string{"se"},
 		Usage:   "Searches for packages using given keyword",
 		Action: func(c *cli.Context) error {
-			cmd := command.New('S')
-			cmd.AddOption('s')
-			x := cmd.Form(c)
-			fmt.Println(x)
+			cmd := command.New(c, 'S')
+			cmd.AddOptions('s')
+			cmd.FormWithArgs()
+			fmt.Println(cmd.Command)
 			return nil
 		},
 	}

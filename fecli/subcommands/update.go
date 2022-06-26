@@ -21,16 +21,16 @@ func Update() *cli.Command {
 			},
 		},
 		Action: func(c *cli.Context) error {
-			cmd := command.New('S')
+			cmd := command.New(c, 'S')
 			cmd.AddOptions('y', 'u')
-			cmd.AddFlags("skipreview", "noconfirm", "needed")
+			cmd.AddFlagsImplicit("skipreview", "needed")
 
 			ignoreSlice := c.StringSlice("ignore")
 			if len(ignoreSlice) > 0 {
 				cmd.AddStringFlag("ignore", strings.Join(ignoreSlice, ","))
 			}
 
-			cmd.Form(c)
+			cmd.FormNoArgs()
 			return nil
 		},
 	}
