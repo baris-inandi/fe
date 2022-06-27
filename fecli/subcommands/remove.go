@@ -2,6 +2,7 @@ package subcommands
 
 import (
 	"fmt"
+	"strings"
 
 	"github.com/baris-inandi/fe/command"
 	"github.com/urfave/cli/v2"
@@ -26,21 +27,27 @@ func Remove() *cli.Command {
 		},
 		Action: func(c *cli.Context) error {
 			cmd := command.New(c, 'R')
+			cmd.AddFlagsImplicit("skipreview", "cleanafter")
+			if !c.Bool("keep-deps") {
+				cmd.AddOptions('s')
+			}
 			if c.Bool("query") {
+				argsSlice := c.Args().Slice()
+				args := strings.Join(argsSlice, " ")
+				if len(argsSlice) > 0 {
+					cmd.FormWithSubstitute("$(paru -Qqs " + args + ")")
+					cmd.Exec()
+				}
 				// TODO: implement the following script:
 				/*
 				   set targets (paru -Qqs $argv)
 				   if test -n "$targets"
-				       paru -Rs $targets --skipreview --cleanafter --removemake
+				       paru -Rs --skipreview --cleanafter --removemake $(paru -Qqs $argv)
 				   else
 				       echo "Query returned no results."
 				       return 1
 				   end
 				*/
-			}
-			cmd.AddFlagsImplicit("skipreview", "cleanafter")
-			if !c.Bool("keep-deps") {
-				cmd.AddOptions('s')
 			}
 			a := cmd.FormWithArgs()
 			fmt.Println(a)
