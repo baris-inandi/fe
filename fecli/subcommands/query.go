@@ -7,10 +7,10 @@ import (
 	"github.com/urfave/cli/v2"
 )
 
-func List() *cli.Command {
+func Query() *cli.Command {
 	return &cli.Command{
-		Name:    "list",
-		Aliases: []string{"ls"},
+		Name:    "query",
+		Aliases: []string{"qr"},
 		Usage:   "Queries packages",
 		Flags: []cli.Flag{
 			&cli.BoolFlag{

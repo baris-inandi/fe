@@ -26,7 +26,8 @@ var Cli = &cli.App{
 		subcommands.Search(),
 		subcommands.Update(),
 		subcommands.Clean(),
-		subcommands.List(),
+		subcommands.Query(),
+		subcommands.Find(),
 		subcommands.Remove(),
 	},
 }
