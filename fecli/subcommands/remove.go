@@ -27,7 +27,7 @@ func Remove() *cli.Command {
 		},
 		Action: func(c *cli.Context) error {
 			cmd := command.New(c, 'R')
-			cmd.AddFlagsImplicit("skipreview", "cleanafter")
+			cmd.AddFlagsImplicit("--config ~/.config/fe/paru.conf", "skipreview", "cleanafter")
 			if !c.Bool("keep-deps") {
 				cmd.AddOptions('s')
 			}

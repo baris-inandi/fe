@@ -1,8 +1,6 @@
 package subcommands
 
 import (
-	"fmt"
-
 	"github.com/baris-inandi/fe/command"
 	"github.com/urfave/cli/v2"
 )
@@ -15,9 +13,9 @@ func Clean() *cli.Command {
 		Action: func(c *cli.Context) error {
 			cmd := command.New(c, 'R')
 			cmd.AddOptions('s')
-			cmd.AddFlagsImplicit("skipreview", "cleanafter")
+			cmd.AddFlagsImplicit("--config ~/.config/fe/paru.conf", "skipreview", "cleanafter")
 			cmd.FormWithSubstitute("$(paru -Qqtd)")
-			fmt.Println(cmd.Command)
+
 			return nil
 		},
 	}

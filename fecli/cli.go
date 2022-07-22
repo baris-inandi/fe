@@ -20,6 +20,11 @@ var Cli = &cli.App{
 			Aliases: []string{"d"},
 			Usage:   "Don't implicitly pass flags to paru",
 		},
+		&cli.BoolFlag{
+			Name:    "noparu",
+			Aliases: []string{"n"},
+			Usage:   "Use pacman instead of paru",
+		},
 	},
 	Commands: []*cli.Command{
 		subcommands.Install(),

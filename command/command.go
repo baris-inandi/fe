@@ -1,6 +1,9 @@
 package command
 
 import (
+	"fmt"
+	"os"
+	"os/exec"
 	"strings"
 
 	"github.com/baris-inandi/fe/utils"
@@ -12,7 +15,7 @@ func (c *Cmd) FormNoArgs() string {
 	for _, a := range arbitraryFlags {
 		c.addFlag(a)
 	}
-	out := "paru -" + string(c.operation) + string(c.options) + " " + strings.Join(c.flags, " ")
+	out := c.bin + " -" + string(c.operation) + string(c.options) + " " + strings.Join(c.flags, " ")
 	c.Command = out
 	return out
 }
@@ -76,17 +79,25 @@ func (c *Cmd) AddOptions(options ...rune) {
 
 func (c *Cmd) AddFlagsImplicit(flags ...string) {
 	ctx := c.ctx
-	if !ctx.Bool("default") {
+	if !ctx.Bool("default") && !ctx.Bool("noparu") {
 		for _, flag := range flags {
 			c.addFlag(flag)
 		}
 	}
 }
 
-func (c *Cmd) bashCommand() string {
-	return "bash -c \"" + c.Command + "\""
+func (c *Cmd) SetBinary(bin string) {
+	c.bin = bin
 }
 
 func (c *Cmd) Exec() {
-	c.bashCommand()
+	fmt.Println("Executing: " + c.Command)
+	cmd := exec.Command("bash", "-c", c.Command)
+	cmd.Stdin = os.Stdin
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
+	err := cmd.Run()
+	if err != nil {
+		panic(1)
+	}
 }

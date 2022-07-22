@@ -1,8 +1,6 @@
 package subcommands
 
 import (
-	"fmt"
-
 	"github.com/baris-inandi/fe/command"
 	"github.com/urfave/cli/v2"
 )
@@ -11,7 +9,7 @@ func Query() *cli.Command {
 	return &cli.Command{
 		Name:    "query",
 		Aliases: []string{"qr"},
-		Usage:   "Queries packages",
+		Usage:   "Queries installed packages",
 		Flags: []cli.Flag{
 			&cli.BoolFlag{
 				Name:    "explicit",
@@ -49,7 +47,7 @@ func Query() *cli.Command {
 				cmd.AddOptions('d')
 			}
 			cmd.FormNoArgs()
-			fmt.Println(cmd.Command)
+
 			return nil
 		},
 	}

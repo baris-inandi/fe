@@ -5,6 +5,7 @@ import (
 )
 
 type Cmd struct {
+	bin              string       // paru, paruz, pacman etc.
 	operation        rune         // S
 	options          []rune       // yu
 	flags            []string     // -c --quiet
@@ -14,7 +15,12 @@ type Cmd struct {
 }
 
 func New(ctx *cli.Context, operation rune) Cmd {
+	bin := "paru"
+	if ctx.Bool("noparu") {
+		bin = "sudo pacman"
+	}
 	return Cmd{
+		bin:              bin,
 		operation:        operation,
 		options:          []rune{},
 		flags:            []string{},

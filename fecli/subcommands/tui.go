@@ -5,7 +5,7 @@ import (
 	"github.com/urfave/cli/v2"
 )
 
-func Search() *cli.Command {
+func TUI() *cli.Command {
 	return &cli.Command{
 		Name:    "search",
 		Aliases: []string{"se"},

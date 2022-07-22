@@ -1,8 +1,6 @@
 package subcommands
 
 import (
-	"fmt"
-
 	"github.com/baris-inandi/fe/command"
 	"github.com/urfave/cli/v2"
 )
@@ -21,14 +19,14 @@ func Install() *cli.Command {
 		},
 		Action: func(c *cli.Context) error {
 			cmd := command.New(c, 'S')
-			cmd.AddFlagsImplicit("removemake", "skipreview", "needed")
+			cmd.AddFlagsImplicit("--config ~/.config/fe/paru.conf", "removemake", "skipreview", "needed")
 			file := c.String("file")
 			if file != "" {
 				cmd.FormWithSubstitute("- <" + file)
 			} else {
 				cmd.FormWithArgs()
 			}
-			fmt.Println(cmd.Command)
+			cmd.Exec()
 			return nil
 		},
 	}

@@ -1,7 +1,6 @@
 package subcommands
 
 import (
-	"fmt"
 	"strings"
 
 	"github.com/baris-inandi/fe/command"
@@ -24,7 +23,7 @@ func Update() *cli.Command {
 		Action: func(c *cli.Context) error {
 			cmd := command.New(c, 'S')
 			cmd.AddOptions('y', 'u')
-			cmd.AddFlagsImplicit("skipreview", "needed")
+			cmd.AddFlagsImplicit("--config ~/.config/fe/paru.conf", "skipreview", "needed")
 
 			ignoreSlice := c.StringSlice("ignore")
 			if len(ignoreSlice) > 0 {
@@ -32,7 +31,7 @@ func Update() *cli.Command {
 			}
 
 			cmd.FormNoArgs()
-			fmt.Println(cmd.Command)
+
 			return nil
 		},
 	}
