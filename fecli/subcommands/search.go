@@ -14,7 +14,7 @@ func Search() *cli.Command {
 			cmd := command.New(c, 'S')
 			cmd.AddOptions('s')
 			cmd.FormWithArgs()
-
+			cmd.Exec()
 			return nil
 		},
 	}

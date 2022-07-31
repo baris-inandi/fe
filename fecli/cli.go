@@ -32,7 +32,7 @@ var Cli = &cli.App{
 		subcommands.Update(),
 		subcommands.Clean(),
 		subcommands.Query(),
-		subcommands.Find(),
+		subcommands.Fuzzy(),
 		subcommands.Remove(),
 	},
 }

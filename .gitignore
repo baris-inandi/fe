@@ -1,13 +1,27 @@
 # File created using '.gitignore Generator' for Visual Studio Code: https://bit.ly/vscode-gig
-# Created by https://www.toptal.com/developers/gitignore/api/visualstudiocode,linux,go,macos,windows
-# Edit at https://www.toptal.com/developers/gitignore?templates=visualstudiocode,linux,go,macos,windows
+# Created by https://www.toptal.com/developers/gitignore/api/windows,visualstudiocode,macos,linux,go,archlinuxpackages
+# Edit at https://www.toptal.com/developers/gitignore?templates=windows,visualstudiocode,macos,linux,go,archlinuxpackages
+
+### ArchLinuxPackages ###
+*.tar
+*.tar.*
+*.jar
+*.exe
+*.msi
+*.zip
+*.tgz
+*.log
+*.log.*
+*.sig
+
+pkg/
+src/
 
 ### Go ###
 # If you prefer the allow list template instead of the deny list, see community template:
 # https://github.com/github/gitignore/blob/main/community/Golang/Go.AllowList.gitignore
 #
 # Binaries for programs and plugins
-*.exe
 *.exe~
 *.dll
 *.so
@@ -119,7 +133,6 @@ $RECYCLE.BIN/
 
 # Windows Installer files
 *.cab
-*.msi
 *.msix
 *.msm
 *.msp
@@ -127,7 +140,8 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,linux,go,macos,windows
+# End of https://www.toptal.com/developers/gitignore/api/windows,visualstudiocode,macos,linux,go,archlinuxpackages
 
 # Custom rules (everything added below won't be overriden by 'Generate .gitignore File' if you use 'Update' option)
 
+fe

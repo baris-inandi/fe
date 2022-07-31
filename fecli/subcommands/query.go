@@ -47,7 +47,7 @@ func Query() *cli.Command {
 				cmd.AddOptions('d')
 			}
 			cmd.FormNoArgs()
-
+			cmd.Exec()
 			return nil
 		},
 	}

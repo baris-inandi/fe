@@ -1,7 +1,6 @@
 package command
 
 import (
-	"fmt"
 	"os"
 	"os/exec"
 	"strings"
@@ -91,13 +90,12 @@ func (c *Cmd) SetBinary(bin string) {
 }
 
 func (c *Cmd) Exec() {
-	fmt.Println("Executing: " + c.Command)
 	cmd := exec.Command("bash", "-c", c.Command)
 	cmd.Stdin = os.Stdin
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 	err := cmd.Run()
 	if err != nil {
-		panic(1)
+		os.Exit(1)
 	}
 }

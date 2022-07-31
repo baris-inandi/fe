@@ -8,3 +8,4 @@ DEPENDS ON:
 bash
 sudo
 pacman
+fzf

@@ -13,9 +13,9 @@ func Clean() *cli.Command {
 		Action: func(c *cli.Context) error {
 			cmd := command.New(c, 'R')
 			cmd.AddOptions('s')
-			cmd.AddFlagsImplicit("--config ~/.config/fe/paru.conf", "skipreview", "cleanafter")
+			cmd.AddFlagsImplicit("skipreview", "cleanafter")
 			cmd.FormWithSubstitute("$(paru -Qqtd)")
-
+			cmd.Exec()
 			return nil
 		},
 	}

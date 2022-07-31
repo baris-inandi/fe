@@ -23,15 +23,13 @@ func Update() *cli.Command {
 		Action: func(c *cli.Context) error {
 			cmd := command.New(c, 'S')
 			cmd.AddOptions('y', 'u')
-			cmd.AddFlagsImplicit("--config ~/.config/fe/paru.conf", "skipreview", "needed")
-
+			cmd.AddFlagsImplicit("skipreview", "needed")
 			ignoreSlice := c.StringSlice("ignore")
 			if len(ignoreSlice) > 0 {
 				cmd.AddStringFlag("ignore", strings.Join(ignoreSlice, ","))
 			}
-
 			cmd.FormNoArgs()
-
+			cmd.Exec()
 			return nil
 		},
 	}

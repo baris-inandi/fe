@@ -19,7 +19,7 @@ func Install() *cli.Command {
 		},
 		Action: func(c *cli.Context) error {
 			cmd := command.New(c, 'S')
-			cmd.AddFlagsImplicit("--config ~/.config/fe/paru.conf", "removemake", "skipreview", "needed")
+			cmd.AddFlagsImplicit("removemake", "skipreview", "needed")
 			file := c.String("file")
 			if file != "" {
 				cmd.FormWithSubstitute("- <" + file)
