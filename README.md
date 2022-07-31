@@ -9,3 +9,5 @@ bash
 sudo
 pacman
 fzf
+makedepends:
+go

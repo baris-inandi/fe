@@ -26,6 +26,6 @@ import (
 func main() {
 	err := fecli.Cli.Run(os.Args)
 	if err != nil {
-		panic(err)
+		os.Exit(1)
 	}
 }
