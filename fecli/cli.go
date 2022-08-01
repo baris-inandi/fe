@@ -27,12 +27,13 @@ var Cli = &cli.App{
 		},
 	},
 	Commands: []*cli.Command{
+		subcommands.Configure(),
 		subcommands.Install(),
+		subcommands.Remove(),
 		subcommands.Search(),
 		subcommands.Update(),
 		subcommands.Clean(),
 		subcommands.Query(),
 		subcommands.Fuzzy(),
-		subcommands.Remove(),
 	},
 }
