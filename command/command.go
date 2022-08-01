@@ -89,12 +89,20 @@ func (c *Cmd) SetBinary(bin string) {
 	c.bin = bin
 }
 
-func (c *Cmd) ExecHandleErr() error {
-	cmd := exec.Command("bash", "-c", c.Command)
+func feExec(str string) error {
+	cmd := exec.Command("bash", "-c", str)
 	cmd.Stdin = os.Stdin
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 	return cmd.Run()
+}
+
+func StrExec(str string) error {
+	return feExec(str)
+}
+
+func (c *Cmd) ExecHandleErr() error {
+	return feExec(c.Command)
 }
 
 func (c *Cmd) Exec() {

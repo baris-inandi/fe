@@ -34,6 +34,7 @@ var Cli = &cli.App{
 		subcommands.Clean(),
 		subcommands.Query(),
 		subcommands.Fuzzy(),
+		subcommands.Checkupdates(),
 		subcommands.Configure(),
 	},
 }
