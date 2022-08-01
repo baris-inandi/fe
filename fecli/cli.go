@@ -27,7 +27,6 @@ var Cli = &cli.App{
 		},
 	},
 	Commands: []*cli.Command{
-		subcommands.Configure(),
 		subcommands.Install(),
 		subcommands.Remove(),
 		subcommands.Search(),
@@ -35,5 +34,6 @@ var Cli = &cli.App{
 		subcommands.Clean(),
 		subcommands.Query(),
 		subcommands.Fuzzy(),
+		subcommands.Configure(),
 	},
 }
