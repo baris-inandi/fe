@@ -10,9 +10,10 @@ import (
 
 func Update() *cli.Command {
 	return &cli.Command{
-		Name:    "update",
-		Aliases: []string{"up"},
-		Usage:   "Updates all packages",
+		Name:     "update",
+		Category: CATEGORY_MAIN,
+		Aliases:  []string{"up"},
+		Usage:    "Updates all packages",
 		Flags: []cli.Flag{
 			&cli.StringSliceFlag{
 				Name:    "ignore",

@@ -10,6 +10,7 @@ import (
 func Remove() *cli.Command {
 	return &cli.Command{
 		Name:    "remove",
+		Category: CATEGORY_MAIN,
 		Aliases: []string{"rm"},
 		Usage:   "Removes packages",
 		Flags: []cli.Flag{

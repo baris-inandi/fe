@@ -8,6 +8,7 @@ import (
 func Query() *cli.Command {
 	return &cli.Command{
 		Name:    "query",
+		Category: CATEGORY_UTILS,
 		Aliases: []string{"qr"},
 		Usage:   "Queries installed packages",
 		Flags: []cli.Flag{

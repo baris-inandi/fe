@@ -6,9 +6,10 @@ import (
 )
 
 var Cli = &cli.App{
-	Name:    "fe",
-	Usage:   "AUR helper with a familiar subcommand system",
-	Suggest: true,
+	Name:                   "fe",
+	Usage:                  "AUR helper with a familiar subcommand system",
+	Suggest:                true,
+	UseShortOptionHandling: true,
 	Flags: []cli.Flag{
 		&cli.StringFlag{
 			Name:    "paru",

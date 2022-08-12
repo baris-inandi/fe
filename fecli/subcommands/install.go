@@ -7,9 +7,10 @@ import (
 
 func Install() *cli.Command {
 	return &cli.Command{
-		Name:    "install",
-		Aliases: []string{"in"},
-		Usage:   "Syncs packages",
+		Name:     "install",
+		Category: CATEGORY_MAIN,
+		Aliases:  []string{"in"},
+		Usage:    "Syncs packages",
 		Flags: []cli.Flag{
 			&cli.PathFlag{
 				Name:    "file",

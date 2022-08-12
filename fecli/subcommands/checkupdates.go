@@ -7,9 +7,10 @@ import (
 
 func Checkupdates() *cli.Command {
 	return &cli.Command{
-		Name:    "checkupdates",
-		Aliases: []string{"cu"},
-		Usage:   "Prints a list of pending updates",
+		Name:     "checkupdates",
+		Category: CATEGORY_UTILS,
+		Aliases:  []string{"cu"},
+		Usage:    "Prints a list of pending updates",
 		Action: func(c *cli.Context) error {
 			return command.StrExec("checkupdates")
 		},

@@ -7,9 +7,10 @@ import (
 
 func Search() *cli.Command {
 	return &cli.Command{
-		Name:    "search",
-		Aliases: []string{"se"},
-		Usage:   "Searches for packages using given keyword",
+		Name:     "search",
+		Category: CATEGORY_MAIN,
+		Aliases:  []string{"se"},
+		Usage:    "Searches for packages using given keyword",
 		Action: func(c *cli.Context) error {
 			cmd := command.New(c, 'S')
 			cmd.AddOptions('s')

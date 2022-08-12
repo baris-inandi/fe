@@ -7,9 +7,10 @@ import (
 
 func Info() *cli.Command {
 	return &cli.Command{
-		Name:    "info",
-		Aliases: []string{"if"},
-		Usage:   "Print detailed information about a package",
+		Name:     "info",
+		Category: CATEGORY_MAIN,
+		Aliases:  []string{"if"},
+		Usage:    "Print detailed information about a package",
 		Action: func(c *cli.Context) error {
 			cmd := command.New(c, 'S')
 			cmd.AddOptions('i')

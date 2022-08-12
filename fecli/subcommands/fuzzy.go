@@ -10,6 +10,7 @@ import (
 func Fuzzy() *cli.Command {
 	return &cli.Command{
 		Name:    "fuzzy",
+		Category: CATEGORY_UTILS,
 		Aliases: []string{"fz"},
 		Usage:   "Fuzzy-search for packages using paruz",
 		Action: func(c *cli.Context) error {

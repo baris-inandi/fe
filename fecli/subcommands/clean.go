@@ -8,6 +8,7 @@ import (
 func Clean() *cli.Command {
 	return &cli.Command{
 		Name:    "clean",
+		Category: CATEGORY_UTILS,
 		Aliases: []string{"cl"},
 		Usage:   "Removes unnecessary packages",
 		Action: func(c *cli.Context) error {

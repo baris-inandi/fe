@@ -11,6 +11,7 @@ import (
 func Configure() *cli.Command {
 	return &cli.Command{
 		Name:    "configure",
+		Category: CATEGORY_UTILS,
 		Aliases: []string{"cf"},
 		Usage:   "Overwrite /etc/paru.conf with recommended configuration",
 		Action: func(c *cli.Context) error {
